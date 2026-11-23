@@ -5,7 +5,10 @@
 <h1 align="center">betterDC</h1>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Platform-Windows-2563EB?style=flat-square&amp;logo=windows&amp;logoColor=white" alt="Platform: Windows">
+  <a href="betterDC.theme.css"><img src="https://img.shields.io/badge/Version-1.0.0-1D4ED8?style=flat-square" alt="Version 1.0.0"></a>
+  <a href="#quick-installation"><img src="https://img.shields.io/badge/Platform-Windows-2563EB?style=flat-square&amp;logo=windows&amp;logoColor=white" alt="Platform: Windows"></a>
+  <a href="https://vencord.dev/"><img src="https://img.shields.io/badge/Client-Vencord-0369A1?style=flat-square" alt="Client: Vencord"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-1E40AF?style=flat-square" alt="License: MIT"></a>
 </p>
 
 betterDC is a CSS theme for Discord desktop with Vencord. It adds a dark blue wallpaper inspired by *Bleach* or your own wallpaper behind the server list, channel list, and chat. The wallpaper fills the window and the main panels are translucent.
