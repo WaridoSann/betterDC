@@ -1,36 +1,67 @@
-# betterDC
+<p align="center">
+  <img src="assets/betterdc-logo.png" alt="betterDC logo" width="104" height="104">
+</p>
 
-betterDC is a CSS theme for Discord desktop with Vencord. It adds a dark purple gradient or your own wallpaper behind the server list, channel list, and chat. The wallpaper fills the window and the main panels are translucent.
+<h1 align="center">betterDC</h1>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Platform-Windows-2563EB?style=flat-square&amp;logo=windows&amp;logoColor=white" alt="Platform: Windows">
+</p>
+
+betterDC is a CSS theme for Discord desktop with Vencord. It adds a dark blue wallpaper inspired by *Bleach* or your own wallpaper behind the server list, channel list, and chat. The wallpaper fills the window and the main panels are translucent.
 
 betterDC is an independent project unaffiliated with Discord or Vencord.
 
-## Install on Windows
+## Quick installation
 
-1. If needed, run the Vencord Windows installer, select your Discord installation, and click **Install**. Reopen Discord. [Vencord download](https://vencord.dev/download/)
-2. In Discord, open **User Settings → Appearance** and choose **Dark** or **Midnight**.
-3. Download the stylesheet using GitHub's **Download raw file** button. [betterDC.theme.css](betterDC.theme.css)
-4. In **User Settings**, find the **Vencord** section and open **Themes → Local Themes → Open Themes Folder**. Copy the downloaded file into that folder.
-5. Back in **Local Themes**, click **Load missing Themes** and turn on **betterDC**.
+### 1. Install Vencord on Windows
 
-To use QuickCSS, open **Edit QuickCSS** in **Local Themes** and paste the entire stylesheet. Turn on **Enable Custom CSS** in **User Settings → Vencord**.
+Run the official Windows installer, select your Discord installation, and click **Install**. Open Discord afterward. If Vencord is already installed, go to step 2. [Download the Vencord Windows installer](https://github.com/Vencord/Installer/releases/latest/download/VencordInstaller.exe)
 
-## Change the wallpaper
+<img src="assets/vencord-installer.jpg" alt="Vencord Installer with Discord selected and the green Install button visible" width="840">
 
-Open your installed theme file in Notepad, or edit it in QuickCSS. In the `:root` block at the top, replace `none` with `url("https://i.imgur.com/YOUR_IMAGE.jpg")` and save. Use a direct link to your own image. Vencord allows image hosts such as `i.imgur.com` and `raw.githubusercontent.com`.
+### 2. Put the theme and wallpaper in the Themes folder
 
-| Setting | Default | What it controls |
-| --- | --- | --- |
-| `--betterdc-wallpaper-image` | `none` | Use `url("...")` for an image or `none` for the gradient. |
-| `--betterdc-wallpaper-position` | `center` | Where the image sits as it fills the window. Try `center top` or `25% 50%`. |
-| `--betterdc-overlay-opacity` | `0.58` | How much the wallpaper is darkened, from `0` to `1`. |
-| `--betterdc-panel-opacity` | `0.56` | How opaque the main panels are, from `0` to `1`. |
+In Discord, open **User Settings → Appearance** and choose **Dark** or **Midnight**. Under **Vencord**, open **Themes → Local Themes → Open Themes Folder**.
 
-Raise either opacity if text is hard to read over a bright image. To use an image from your PC, place it in the Themes folder and use `url("vencord:///themes/wallpaper.jpg")`, with your image's filename.
+Open each file below and click GitHub's **Download raw file** button. Copy both `betterDC.theme.css` and `betterdc-facades.png` into the Themes folder.
 
-## Restore Discord's appearance
+[![Open the theme CSS for download](https://img.shields.io/badge/Download-Theme%20CSS-1e40af?style=for-the-badge)](betterDC.theme.css)
+[![Open the blue wallpaper PNG for download](https://img.shields.io/badge/Download-Blue%20Wallpaper-2563eb?style=for-the-badge)](assets/betterdc-facades.png)
 
-Turn off **betterDC** in **Local Themes**. If you installed it through QuickCSS, remove the betterDC stylesheet from the editor. If you changed Discord's appearance mode, reselect your previous mode.
+### 3. Paste the QuickCSS
 
-## Compatibility
+Back in **Local Themes**, click **Edit QuickCSS** and paste the full block below. If you already have a betterDC block, replace it with this one. In **User Settings → Vencord**, make sure **Enable Custom CSS** is on.
 
-The theme targets Discord desktop with Vencord in dark appearance modes. Discord updates can change the panel selectors. The theme was checked against Vencord's theme-loading source and tested in a Chromium fixture. Live Discord desktop testing was unavailable. [Vencord theme loader](https://github.com/Vendicated/Vencord/blob/ce9355e9a93e369c7295fa162ad563f7f97b1ff7/src/api/Themes.ts)
+```css
+:root {
+    --betterdc-wallpaper-image: url("vencord:///themes/betterdc-facades.png");
+    --betterdc-wallpaper-position: center;
+    --betterdc-overlay-opacity: 0.38;
+    --betterdc-panel-opacity: 0.35;
+    --betterdc-glass-blur: 14px;
+}
+
+:is(.theme-dark, .theme-darker, .theme-midnight) #app-mount :is(
+    [class^="guilds_"], [class*=" guilds_"],
+    [class^="sidebarList_"], [class*=" sidebarList_"],
+    [class^="chat_"], [class*=" chat_"]
+) {
+    backdrop-filter: blur(var(--betterdc-glass-blur)) saturate(115%);
+    background-image: linear-gradient(rgb(9 17 46 / 0.25), transparent 45%);
+    border-radius: 10px;
+    box-shadow: inset 0 0 0 1px rgb(155 201 255 / 0.23);
+}
+```
+
+### 4. Enable betterDC and restart Discord
+
+In **Local Themes**, click **Load missing Themes** if betterDC is missing. Turn on **betterDC**, then quit Discord completely and reopen it.
+
+## Customize or remove the theme
+
+To use another wallpaper, copy it into the Themes folder and change the filename in `--betterdc-wallpaper-image`. You can also use a direct image URL from a Vencord-supported host such as `i.imgur.com`.
+
+Lower `--betterdc-panel-opacity` for more transparent panels, raise `--betterdc-overlay-opacity` for darker wallpaper, or adjust `--betterdc-glass-blur` to change the blur.
+
+To restore Discord's appearance, switch off **betterDC** in **Local Themes** and remove the betterDC block from **Edit QuickCSS**. If you changed your Discord appearance mode, select your previous mode again.
